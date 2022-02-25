@@ -17,7 +17,7 @@ namespace CloudCustomers.UnitTests.Helpers
     {
         internal static Mock<HttpMessageHandler> SetupBasicGetResourseList(List<T> expectedResponse)
         {
-            var mockResponse = new HttpResponseMessage(HttpStatusCode.OK)
+            var mockResponse = new HttpResponseMessage(System.Net.HttpStatusCode.OK)
             {
                 Content = new StringContent(JsonConvert.SerializeObject(expectedResponse))
             };
@@ -74,7 +74,7 @@ namespace CloudCustomers.UnitTests.Helpers
                 .Protected()
                 .Setup<Task<HttpResponseMessage>>(
                 "SendAsync",
-                httpRequestMessage,
+                ItExpr.IsAny<HttpRequestMessage>(),
                 ItExpr.IsAny<CancellationToken>())
                 .ReturnsAsync(mockResponse);
 

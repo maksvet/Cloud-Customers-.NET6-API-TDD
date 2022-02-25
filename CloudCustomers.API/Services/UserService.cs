@@ -28,6 +28,7 @@ namespace CloudCustomers.API.Services
             }
             var responseContent = userResponse.Content;
             var allUsers = await responseContent.ReadFromJsonAsync<List<User>>();
+            Console.WriteLine(allUsers);
             return allUsers.ToList();
         }
     }
